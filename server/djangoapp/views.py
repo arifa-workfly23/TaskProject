@@ -110,15 +110,17 @@ def get_dealerships(request):
 # Create a `add_review` view to submit a review
 def add_review(request, dealer_id):
     if request.method == "GET":
-        dealersid = dealer_id
-       # url = "https://5b93346d.us-south.apigw.appdomain.cloud/dealerships/dealer-get?dealerId={0}".format(dealersid)
-       url= "https://arifaworkfly-3000.theiadocker-3-labs-prod-theiak8s-4-tor01.proxy.cognitiveclass.ai/dealerships/get?dealerId={0}".format(dealersid)
+         dealersid = dealer_id
+       #url = "https://5b93346d.us-south.apigw.appdomain.cloud/dealerships/dealer-get?dealerId={0}".format(dealersid)
+       #url= "https://arifaworkfly-3000.theiadocker-3-labs-prod-theiak8s-4-tor01.proxy.cognitiveclass.ai/dealerships/get?dealerId={0}".format(dealersid)
+         url = "https://arifaworkfly-3000.theiadocker-3-labs-prod-theiak8s-4-tor01.proxy.cognitiveclass.ai/dealerships/get?dealerId={0}".format(dealersid)
+     
         # Get dealers from the URL
-        context = {
+         context = {
             "cars": models.CarModel.objects.all(),
             "dealers": restapis.get_dealers_from_cf(url),
         }
-        return render(request, 'djangoapp/add_review.html', context)
+         return render(request, 'djangoapp/add_review.html', context)
     if request.method == "POST":
         if request.user.is_authenticated:
             form = request.POST
