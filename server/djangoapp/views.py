@@ -145,4 +145,9 @@ def add_review(request, dealer_id):
             return redirect("djangoapp:dealer_details", dealer_id=dealer_id)
         else:
             return redirect("/djangoapp/login")
+
+
+def get_dealer_details(request, dealer_id):
+         dealerdetails= get_dealer_reviews_by_id_from_cf(request, dealerId)
+         return HttpResponse(dealerdetails)
             
