@@ -108,11 +108,11 @@ def get_dealerships(request):
     if request.method == "GET":
          url = "https://arifaworkfly-3000.theiadocker-3-labs-prod-theiak8s-4-tor01.proxy.cognitiveclass.ai/dealerships/get"
          # Get dealers from the URL
-        dealerships = get_dealers_from_cf(url)
+         dealerships = get_dealers_from_cf(url)
         # Concat all dealer's short name
-        dealer_names = ' '.join([dealer.short_name for dealer in dealerships])
+         dealer_names = ' '.join([dealer.short_name for dealer in dealerships])
         # Return a list of dealer short name
-        return HttpResponse(dealer_names)
+         return HttpResponse(dealer_names)
 # Create a `add_review` view to submit a review
 def add_review(request, dealer_id):
     if request.method == "GET":
