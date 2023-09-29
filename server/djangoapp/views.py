@@ -114,6 +114,17 @@ def get_dealerships(request):
         # Return a list of dealer short name
          return HttpResponse(dealer_names)
 # Create a `add_review` view to submit a review
+
+def get_dealer_details(request, dealer_id):
+    context = {}
+    if request.method == "GET":
+        url = 'https://arifaworkfly-5000.theiadocker-3-labs-prod-theiak8s-4-tor01.proxy.cognitiveclass.ai/api/get_reviews'
+        #https://arifaworkfly-8000.theiadocker-3-labs-prod-theiak8s-4-tor01.proxy.cognitiveclass.ai/djangoapp/dealer/15
+
+        context = {"reviews":  restapis.get_dealer_reviews_by_id_from_cf(url, dealer_id)}
+        return render(request, 'djangoapp/dealer_details.html', context)
+
+
 def add_review(request, dealer_id):
     if request.method == "GET":
          dealersid = dealer_id
@@ -153,7 +164,4 @@ def add_review(request, dealer_id):
             return redirect("/djangoapp/login")
 
 
-def get_dealer_details(request, dealer_id):
-         dealerdetails= get_dealer_reviews_by_id_from_cf(request, dealerId)
-         return HttpResponse(dealerdetails)
-            
+ 
