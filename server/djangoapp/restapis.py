@@ -38,15 +38,15 @@ def get_request(url, **kwargs):
 # - Call get_request() with specified arguments
 # - Parse JSON results into a CarDealer object list
 
-def get_dealers_from_cf(url, **kwargs):
-    results = []
-    # Call get_request with a URL parameter
-    json_result = get_request(url)
-    if json_result:
-        # Get the row list in JSON as dealers
-        dealers = json_result 
-        # For each dealer object
-        for dealer in dealers:
+ def get_dealers_from_cf(url, **kwargs):
+     results = []
+     # Call get_request with a URL parameter
+     json_result = get_request(url)
+         if json_result:
+         # Get the row list in JSON as dealers
+         dealers = json_result 
+         # For each dealer object
+         for dealer in dealers:
             # Get its content in `doc` object
             # Create a CarDealer object with values in `doc` object
             dealer_obj = models.CarDealer(address=dealer["address"], city=dealer["city"], full_name=dealer["full_name"],
@@ -55,7 +55,7 @@ def get_dealers_from_cf(url, **kwargs):
                                    st=dealer["st"], zip=dealer["zip"])
             results.append(dealer_obj)
             print('-------------------------------------------------------')
-    return results
+     return results
 
 # Create a get_dealer_reviews_from_cf method to get reviews by dealer id from a cloud function
 # def get_dealer_by_id_from_cf(url, dealerId):
