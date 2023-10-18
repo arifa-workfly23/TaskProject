@@ -123,9 +123,11 @@ def get_dealerships(request):
 def get_dealer_details(request, dealer_id):
     context = {}
     if request.method == "GET":
-        url = 'https://arifaworkfly-5000.theiadocker-3-labs-prod-theiak8s-4-tor01.proxy.cognitiveclass.ai/api/get_reviews'
+        #url = 'https://arifaworkfly-5000.theiadocker-3-labs-prod-theiak8s-4-tor01.proxy.cognitiveclass.ai/api/get_reviews'
         #https://arifaworkfly-8000.theiadocker-3-labs-prod-theiak8s-4-tor01.proxy.cognitiveclass.ai/djangoapp/dealer/15
-
+        url='https://arifaworkfly-5000.theiadocker-0-labs-prod-theiak8s-4-tor01.proxy.cognitiveclass.ai/api/get_reviews'
+        #https://arifaworkfly-5000.theiadocker-0-labs-prod-theiak8s-4-tor01.proxy.cognitiveclass.ai/api/get_reviews?id=15
+        
         context = {"reviews":  restapis.get_dealer_reviews_by_id_from_cf(url, dealer_id)}
         return render(request, 'djangoapp/dealer_details.html', context)
 
