@@ -47,10 +47,17 @@ def get_dealers_from_cf(url, **kwargs):
     results = []
     # Call get_request with a URL parameter
     json_result = get_request(url)
+     
+    print("-----Arifa---") 
     print(json_result)
+    print("-----Hashmi---") 
     if json_result:
         # Get the row list in JSON as dealers
-        dealers = json_result
+        dealers = json_result 
+            
+       # print(json.dumps(json_result))
+        
+               
         # For each dealer object
         for dealer in dealers:
          
@@ -127,4 +134,7 @@ def analyze_review_sentiments(text):
 # - Get the returned sentiment label such as Positive or Negative
 
 
-#
+# dealer_obj = CarDealer(address="address", city="city", full_name="full_name",
+ #                                  id=2222, lat=300, long=400,
+ #                                  short_name="short_name",
+ #                                  st="st", zip=888)
