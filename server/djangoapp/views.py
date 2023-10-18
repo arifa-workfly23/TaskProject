@@ -109,12 +109,15 @@ def get_dealerships(request):
     if request.method == "GET":
          #url = "https://arifaworkfly-3000.theiadocker-3-labs-prod-theiak8s-4-tor01.proxy.cognitiveclass.ai/dealerships/get"
          url="https://arifaworkfly-3000.theiadocker-0-labs-prod-theiak8s-4-tor01.proxy.cognitiveclass.ai/dealerships/get"
-         # Get dealers from the URL
-         dealerships = restapis.get_dealers_from_cf(url)
-        # Concat all dealer's short name
-         dealer_names = ' '.join([dealer.short_name for dealer in dealerships])
-        # Return a list of dealer short name
-         return HttpResponse(dealer_names)
+        #dealerships = restapis.get_dealers_from_cf(url)
+        #dealer_names = ' '.join([dealer.short_name for dealer in dealerships])
+        #return HttpResponse(dealer_names)
+        
+         context = {"dealerships": restapis.get_dealers_from_cf(url)}
+         return render(request, 'djangoapp/index.html', context)
+
+
+
 # Create a `add_review` view to submit a review
 
 def get_dealer_details(request, dealer_id):
