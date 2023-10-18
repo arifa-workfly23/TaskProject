@@ -10,7 +10,8 @@ from datetime import datetime
 import logging
 import json
 from . import restapis
-from . import models
+from .models import CarDealer, DealerReview  
+
 
 
 # Get an instance of a logger
