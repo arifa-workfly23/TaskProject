@@ -122,7 +122,7 @@ def get_dealerships(request):
 
 def get_dealer_details(request, dealer_id):
     context = {}
-     dealer_id=15
+    dealer_id=15
     if request.method == "GET":
         #url = 'https://arifaworkfly-5000.theiadocker-3-labs-prod-theiak8s-4-tor01.proxy.cognitiveclass.ai/api/get_reviews'
         #https://arifaworkfly-8000.theiadocker-3-labs-prod-theiak8s-4-tor01.proxy.cognitiveclass.ai/djangoapp/dealer/15
