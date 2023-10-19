@@ -10,7 +10,8 @@ from datetime import datetime
 import logging
 import json
 from . import restapis
-from .models import CarDealer, DealerReview  
+from . import models
+from .models import CarDealer, DealerReview, CarModel  
 
 
 
@@ -136,13 +137,16 @@ def get_dealer_details(request, dealer_id):
 def add_review(request, dealer_id):
     if request.method == "GET":
          dealersid = dealer_id
-       #url = "https://5b93346d.us-south.apigw.appdomain.cloud/dealerships/dealer-get?dealerId={0}".format(dealersid)
-       #url= "https://arifaworkfly-3000.theiadocker-3-labs-prod-theiak8s-4-tor01.proxy.cognitiveclass.ai/dealerships/get?dealerId={0}".format(dealersid)
-         url = "https://arifaworkfly-3000.theiadocker-3-labs-prod-theiak8s-4-tor01.proxy.cognitiveclass.ai/dealerships/get?dealerId={0}".format(dealersid)
-     
-        # Get dealers from the URL
+        #url = "https://5b93346d.us-south.apigw.appdomain.cloud/dealerships/dealer-get?dealerId={0}".format(dealersid)
+        #url= "https://arifaworkfly-3000.theiadocker-3-labs-prod-theiak8s-4-tor01.proxy.cognitiveclass.ai/dealerships/get?dealerId={0}".format(dealersid)
+        # url = "https://arifaworkfly-3000.theiadocker-3-labs-prod-theiak8s-4-tor01.proxy.cognitiveclass.ai/dealerships/get?dealerId={0}".format(dealersid)
+         url="https://arifaworkfly-3000.theiadocker-0-labs-prod-theiak8s-4-tor01.proxy.cognitiveclass.ai/dealerships/get?dealerId={0}".format(dealersid)
+      
+         #https://arifaworkfly-8000.theiadocker-0-labs-prod-theiak8s-4-tor01.proxy.cognitiveclass.ai/djangoapp/dealer/15/add_review
+         #https://arifaworkfly-3000.theiadocker-0-labs-prod-theiak8s-4-tor01.proxy.cognitiveclass.ai/dealerships/get
+         # Get dealers from the URL
          context = {
-            "cars": models.CarModel.objects.all(),
+            "cars": CarModel.objects.all(),
             "dealers": restapis.get_dealers_from_cf(url),
         }
          return render(request, 'djangoapp/add_review.html', context)
@@ -157,7 +161,7 @@ def add_review(request, dealer_id):
                 }
             if form.get("purchasecheck"):
                 review["purchase_date"] = datetime.strptime(form.get("purchasedate"), "%m/%d/%Y").isoformat()
-                car = models.CarModel.objects.get(pk=form["car"])
+                car = CarModel.objects.get(pk=form["car"])
                 review["car_make"] = car.carmake.name
                 review["car_model"] = car.name
                 review["car_year"]= car.year.strftime("%Y")
