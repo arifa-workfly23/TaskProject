@@ -115,6 +115,7 @@ def get_dealer_reviews_by_id_from_cf(url, dealerId):
 
 
 # Create an `analyze_review_sentiments` method to call Watson NLU and analyze text
+#https://arifaworkfly-8000.theiadocker-0-labs-prod-theiak8s-4-tor01.proxy.cognitiveclass.ai/djangoapp/dealer/15
 def analyze_review_sentiments(dealer_review):
     api_key = "8Im5a9f21tMO9WeS0AU9pnDhpLj4S2_WqaNfo-ehy-ot"
     url = "https://api.au-syd.natural-language-understanding.watson.cloud.ibm.com/instances/a6bb5696-39dc-448c-a1d9-530212f6422d"
